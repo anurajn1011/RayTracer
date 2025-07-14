@@ -1,0 +1,3 @@
+C:/Users/User/Documents/Projects/RayTracer/RayTracer/build/CMakeFiles/RayTraceExecutable.dir
+C:/Users/User/Documents/Projects/RayTracer/RayTracer/build/CMakeFiles/ALL_BUILD.dir
+C:/Users/User/Documents/Projects/RayTracer/RayTracer/build/CMakeFiles/ZERO_CHECK.dir
