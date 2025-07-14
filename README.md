@@ -1,2 +1,2 @@
 # RayTracer
-Implementation of a ray tracer
+Implementation of a ray tracer starting from scratch.
