@@ -1,27 +1,31 @@
 #include <iostream>
+#include <fstream>
 
 int main() 
 {
     // image boundaries
     int width = 256;
     int height = 256;
+    
+    // output
+    std::ofstream out("sample_image.ppm", std::ios::binary);
 
     // rendering the image
-    std::cout << "P3\n" << width << " " << "\n255" << std::endl;
+    out << "P6\n" << width << " " << height << "\n255\n";
     
     for(int i = 0; i < height; ++i) {
         for(int j = 0; j < width; ++j) {
-            auto r = double(j) / (width - 1);
-            auto g = double(i) / (height - 1);
-            auto b = 0.0;
+            unsigned char r = static_cast<unsigned char> (j);
+            unsigned char g = static_cast<unsigned char> (i);
+            unsigned char b = 0;
             
-            int ir = int(255.999 * r);
-            int ig = int(255.999 * g);
-            int ib = int(255.999 * b);
-
-            std::cout << ir << " " << ig << " " << ib << std::endl;
+            out.write(reinterpret_cast<const char*>(&r), 1);
+            out.write(reinterpret_cast<const char*>(&g), 1);
+            out.write(reinterpret_cast<const char*>(&b), 1);
         }
     }
+    
+    out.close();
 
     return 0;
 }
