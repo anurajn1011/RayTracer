@@ -11,9 +11,11 @@
 #include <cmath>
 
 class vec3 {
-public:
+private:
     double coord[3];
-
+    
+public:
+    // constructors; default and parameterized
     vec3() : coord{0, 0, 0} {}
     vec3(double coord0, double coord1, double coord2) : coord{coord1, coord2, coord3}
     
@@ -77,14 +79,48 @@ using point = vec3;
 
 // functions for vector manipulation
 inline vec3 operator+(const vec3& v, const vec3& u){
-    return vec3(v.coord[0] + u.coord[0], v.coord[1] + u.coord[1], v.coord[2] + u.coord[2]);
+    return vec3(v.x() + u.x() v.y() + u.y(), v.z() + u.z());
 }
 
 inline vec3 operator-(const vec3& v, const vec3& u){
-    return vec3(v.coord[0] - u.coord[0], v.coord[1] - u.coord[1], v.coord[2] - u.coord[2]);
+    return vec3(v.x() - u.x(), v.y() - u.y(), v.z() - u.z());
 }
 
 inline vec3 operator*(const vec3& v, const vec3& u){
     // Hadamard product
-    return vec3(v.coord[0] * u.coord[0], v.coord[1] * u.coord[1], v.coord[2] * u.coord[2]);
+    return vec3(v.x() * u.x() v.y() * u.y(), v.z() * u.z());
+}
+
+// scalar multiplication
+inline vec3 operator*(const double f, const vec3& v){
+    return vec3(f * v.x(), f * v.y(), f * v.z());
+}
+
+inline vec3 operator*(const vec3& v, const double f){
+    return vec3(f * v.x(), f * v.y(), f * v.z());
+}
+
+inline vec3 operator/(const vec3& v, double f){
+    return v * (1/f)
+}
+
+inline double dot_product(const vec3& v, const vec3& u){
+    return v.x() * u.x() + v.y() * u.y() + v.z() * u.z();
+}
+
+inline vec3 cross_product(const vec3& v, const vec3& u){
+    return vec3(v.y() * u.z() - v.z() * u.y(),
+                v.z() * u.x() - v.x() * u.z(),
+                v.x() * u.y() - v.y() * u.x()
+                );
+}
+
+// unit vector along a given vec3
+inline vec3 unit_vector(const vec3& v){
+    return v / v.euclidean_norm();
+}
+
+// write vector out
+inline std::ostream& operator<<(std::ostream& out, const vec3& v){
+    return out << v.x() << " " << v.y() << " " << v.z();
 }
