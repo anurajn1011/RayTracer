@@ -17,7 +17,7 @@ private:
 public:
     // constructors; default and parameterized
     vec3() : coord{0, 0, 0} {}
-    vec3(double coord0, double coord1, double coord2) : coord{coord1, coord2, coord3}
+    vec3(double coord0, double coord1, double coord2) : coord{coord0, coord1, coord2}
     
     // getters, const functions
     double x() const {
@@ -35,12 +35,12 @@ public:
         return vec3(-coord[0], -coord[1], -coord[2]);
     }
     
-    double operator-[](int i) const {
+    double operator[](int i) const {
         // for const instances of vec3, prevents writing
         return coord[i];
     }
     
-    double& operator-[](int i) {
+    double& operator[](int i) {
         return coord[i];
     }
     
@@ -52,7 +52,7 @@ public:
         return *this;
     }
     
-    vec3& operator*-(double i) {
+    vec3& operator*(double i) {
         coord[0] *= i;
         coord[1] *= i;
         coord[2] *= i;
@@ -79,7 +79,7 @@ using point = vec3;
 
 // functions for vector manipulation
 inline vec3 operator+(const vec3& v, const vec3& u){
-    return vec3(v.x() + u.x() v.y() + u.y(), v.z() + u.z());
+    return vec3(v.x() + u.x(), v.y() + u.y(), v.z() + u.z());
 }
 
 inline vec3 operator-(const vec3& v, const vec3& u){
@@ -88,7 +88,7 @@ inline vec3 operator-(const vec3& v, const vec3& u){
 
 inline vec3 operator*(const vec3& v, const vec3& u){
     // Hadamard product
-    return vec3(v.x() * u.x() v.y() * u.y(), v.z() * u.z());
+    return vec3(v.x() * u.x(), v.y() * u.y(), v.z() * u.z());
 }
 
 // scalar multiplication
@@ -101,7 +101,7 @@ inline vec3 operator*(const vec3& v, const double f){
 }
 
 inline vec3 operator/(const vec3& v, double f){
-    return v * (1/f)
+    return v * (1/f);
 }
 
 inline double dot_product(const vec3& v, const vec3& u){
