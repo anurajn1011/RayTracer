@@ -17,7 +17,7 @@ private:
 public:
     // constructors; default and parameterized
     vec3() : coord{0, 0, 0} {}
-    vec3(double coord0, double coord1, double coord2) : coord{coord0, coord1, coord2}
+    vec3(double coord0, double coord1, double coord2) : coord{coord0, coord1, coord2} {}
     
     // getters, const functions
     double x() const {

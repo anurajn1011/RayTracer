@@ -1,5 +1,7 @@
 #include <iostream>
 #include <fstream>
+#include "vec3.h"
+#include "color.h"
 
 int main() 
 {
@@ -15,13 +17,8 @@ int main()
     
     for(int i = 0; i < height; ++i) {
         for(int j = 0; j < width; ++j) {
-            unsigned char r = static_cast<unsigned char> (j);
-            unsigned char g = static_cast<unsigned char> (i);
-            unsigned char b = 0;
-            
-            out.write(reinterpret_cast<const char*>(&r), 1);
-            out.write(reinterpret_cast<const char*>(&g), 1);
-            out.write(reinterpret_cast<const char*>(&b), 1);
+            auto pixel = color(j, i, 0);
+            color_out(out, pixel);
         }
     }
     
