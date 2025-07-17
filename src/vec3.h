@@ -1,5 +1,5 @@
 //
-//  vec3.h
+//  Vec3.h
 //  
 //
 //  Created by Anuraj Nair on 7/15/25.
@@ -10,14 +10,14 @@
 #include <iostream>
 #include <cmath>
 
-class vec3 {
+class Vec3 {
 private:
     double coord[3];
     
 public:
     // constructors; default and parameterized
-    vec3() : coord{0, 0, 0} {}
-    vec3(double coord0, double coord1, double coord2) : coord{coord0, coord1, coord2} {}
+    Vec3() : coord{0, 0, 0} {}
+    Vec3(double coord0, double coord1, double coord2) : coord{coord0, coord1, coord2} {}
     
     // getters, const functions
     double x() const {
@@ -31,12 +31,12 @@ public:
     }
     
     // unary operator definitions (overloads)
-    vec3 operator-() const {
-        return vec3(-coord[0], -coord[1], -coord[2]);
+    Vec3 operator-() const {
+        return Vec3(-coord[0], -coord[1], -coord[2]);
     }
     
     double operator[](int i) const {
-        // for const instances of vec3, prevents writing
+        // for const instances of Vec3, prevents writing
         return coord[i];
     }
     
@@ -45,21 +45,21 @@ public:
     }
     
     // binary operators
-    vec3& operator+=(const vec3& v) {
+    Vec3& operator+=(const Vec3& v) {
         coord[0] += v.coord[0];
         coord[1] += v.coord[1];
         coord[2] += v.coord[2];
         return *this;
     }
     
-    vec3& operator*=(double i) {
+    Vec3& operator*=(double i) {
         coord[0] *= i;
         coord[1] *= i;
         coord[2] *= i;
         return *this;
     }
     
-    vec3& operator/=(double i) {
+    Vec3& operator/=(double i) {
         return *this *= 1/i;
     }
     
@@ -73,54 +73,54 @@ public:
     }
 };
 
-// aliases for vec3
-using color = vec3;
-using point = vec3;
+// aliases for Vec3
+using Color = Vec3;
+using Point = Vec3;
 
 // functions for vector manipulation
-inline vec3 operator+(const vec3& v, const vec3& u){
-    return vec3(v.x() + u.x(), v.y() + u.y(), v.z() + u.z());
+inline Vec3 operator+(const Vec3& v, const Vec3& u){
+    return Vec3(v.x() + u.x(), v.y() + u.y(), v.z() + u.z());
 }
 
-inline vec3 operator-(const vec3& v, const vec3& u){
-    return vec3(v.x() - u.x(), v.y() - u.y(), v.z() - u.z());
+inline Vec3 operator-(const Vec3& v, const Vec3& u){
+    return Vec3(v.x() - u.x(), v.y() - u.y(), v.z() - u.z());
 }
 
-inline vec3 operator*(const vec3& v, const vec3& u){
+inline Vec3 operator*(const Vec3& v, const Vec3& u){
     // Hadamard product
-    return vec3(v.x() * u.x(), v.y() * u.y(), v.z() * u.z());
+    return Vec3(v.x() * u.x(), v.y() * u.y(), v.z() * u.z());
 }
 
 // scalar multiplication
-inline vec3 operator*(const double f, const vec3& v){
-    return vec3(f * v.x(), f * v.y(), f * v.z());
+inline Vec3 operator*(const double f, const Vec3& v){
+    return Vec3(f * v.x(), f * v.y(), f * v.z());
 }
 
-inline vec3 operator*(const vec3& v, const double f){
-    return vec3(f * v.x(), f * v.y(), f * v.z());
+inline Vec3 operator*(const Vec3& v, const double f){
+    return Vec3(f * v.x(), f * v.y(), f * v.z());
 }
 
-inline vec3 operator/(const vec3& v, double f){
+inline Vec3 operator/(const Vec3& v, double f){
     return v * (1/f);
 }
 
-inline double dot_product(const vec3& v, const vec3& u){
+inline double dot_product(const Vec3& v, const Vec3& u){
     return v.x() * u.x() + v.y() * u.y() + v.z() * u.z();
 }
 
-inline vec3 cross_product(const vec3& v, const vec3& u){
-    return vec3(v.y() * u.z() - v.z() * u.y(),
+inline Vec3 cross_product(const Vec3& v, const Vec3& u){
+    return Vec3(v.y() * u.z() - v.z() * u.y(),
                 v.z() * u.x() - v.x() * u.z(),
                 v.x() * u.y() - v.y() * u.x()
                 );
 }
 
-// unit vector along a given vec3
-inline vec3 unit_vector(const vec3& v){
+// unit vector along a given Vec3
+inline Vec3 unit_vector(const Vec3& v){
     return v / v.euclidean_norm();
 }
 
 // write vector out
-inline std::ostream& operator<<(std::ostream& out, const vec3& v){
+inline std::ostream& operator<<(std::ostream& out, const Vec3& v){
     return out << v.x() << " " << v.y() << " " << v.z();
 }

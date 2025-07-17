@@ -1,6 +1,6 @@
 #include <iostream>
 #include <fstream>
-#include "vec3.h"
+#include "Vec3.h"
 #include "color.h"
 
 int main() 
@@ -17,7 +17,7 @@ int main()
     
     for(int i = 0; i < height; ++i) {
         for(int j = 0; j < width; ++j) {
-            auto pixel = color(j, i, 0);
+            auto pixel = Color(j, i, 0);
             color_out(out, pixel);
         }
     }

@@ -9,13 +9,13 @@
 
 #include <iostream>
 #include <fstream>
-#include "vec3.h"
+#include "Vec3.h"
 
 /*
     Method to write a single pixel's color.
 */
 
-void color_out(std::ostream& out, const color& pixel){
+void color_out(std::ostream& out, const Color& pixel){
     unsigned char r = static_cast<unsigned char> (pixel.x());
     unsigned char g = static_cast<unsigned char> (pixel.y());
     unsigned char b = static_cast<unsigned char> (pixel.z());
