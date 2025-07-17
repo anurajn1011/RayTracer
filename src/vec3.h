@@ -52,7 +52,7 @@ public:
         return *this;
     }
     
-    vec3& operator*(double i) {
+    vec3& operator*=(double i) {
         coord[0] *= i;
         coord[1] *= i;
         coord[2] *= i;
